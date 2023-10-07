@@ -35,7 +35,7 @@
                                         <h4>Projects</h4>
                                     </div>
                                     <div class="text-success text-center mt-2">
-                                        <h1>0</h1>
+                                        <h1>{{ $projects->count() }}</h1>
                                     </div>
                                 </div>
                             </div>

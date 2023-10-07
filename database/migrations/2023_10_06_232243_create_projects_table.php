@@ -10,11 +10,11 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('priority')->nullable();
-            $table->biginteger('user_id')->unsigned();
+            $table->biginteger('user_id')->nullable()->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -25,6 +25,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('projects');
     }
 };

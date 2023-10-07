@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 //Route Hooks - Do not delete//
+	Route::view('projects', 'livewire.projects.index')->middleware('auth');
 	Route::view('tasks', 'livewire.tasks.index')->middleware('auth');
 Auth::routes();
 

@@ -3,14 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Project;
-use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class TaskFactory extends Factory
+class ProjectFactory extends Factory
 {
-    protected $model = Task::class;
+    protected $model = Project::class;
 
     public function definition()
     {
@@ -18,7 +17,6 @@ class TaskFactory extends Factory
             'name' => $this->faker->name,
             'priority' => $this->faker->randomNumber(2, true),
             'user_id' => User::factory(),
-            'project_id' => Project::factory(),
         ];
     }
 }
