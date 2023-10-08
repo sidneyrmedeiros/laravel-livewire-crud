@@ -51,9 +51,9 @@
                                     <td>ACTIONS</td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody wire:sortable="updateOrder" wire:sortable.options="{ animation: 100 }">
                                 @forelse($tasks as $row)
-                                    <tr>
+                                    <tr wire:sortable.item="{{ $row->id }}" wire:key="task-{{ $row->id }}">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->name }}</td>
                                         <td>{{ $row->project->name }}</td>
