@@ -15,9 +15,9 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'priority' => $this->faker->randomNumber(2, true),
-            'user_id' => User::factory(),
+            'name' => $this->faker->bs,
+            'priority' => $this->faker->randomNumber(1, true),
+            'user_id' => User::inRandomOrder()->first()->id,
             'project_id' => Project::factory(),
         ];
     }

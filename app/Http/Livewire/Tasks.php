@@ -30,7 +30,8 @@ class Tasks extends Component
             ->where(function ($query) use ($keyWord) { // aqui a abordagem
                 $query->where('name', 'LIKE', $keyWord)
                 ->orWhere('priority', 'LIKE', $keyWord);
-            });
+            })
+            ->orderBy('priority');
 
         if ($this->projectInput) {
             $this->tasks->where('project_id', $this->projectInput);
@@ -101,4 +102,12 @@ class Tasks extends Component
             Task::where('id', $id)->delete();
         }
     }
+
+    public function updateOrder($list)
+    {
+        foreach($list as $item) {
+            Task::find($item['value'])->update(['priority' => $item['order']]) ;
+        }
+    }
+
 }

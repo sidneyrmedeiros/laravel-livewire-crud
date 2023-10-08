@@ -14,9 +14,9 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'priority' => $this->faker->randomNumber(2, true),
-            'user_id' => User::factory(),
+            'name' => $this->faker->catchPhrase,
+            'priority' => $this->faker->randomNumber(1, true),
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }
