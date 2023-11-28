@@ -8,18 +8,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Task extends Model
 {
-	use HasFactory;
+    use HasFactory;
 
     public $timestamps = true;
 
     protected $table = 'tasks';
 
-    protected $fillable = ['name','priority'];
+    protected $fillable = ['name', 'priority'];
 
-	/**
+    /**
      * Get the user that owns the Task
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
     {
@@ -28,8 +26,6 @@ class Task extends Model
 
     /**
      * Get the project that owns the Task
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function project(): BelongsTo
     {
