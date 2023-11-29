@@ -2,31 +2,37 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Project;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Project;
 
 class Projects extends Component
 {
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
+
     public $selected_id;
+
     public $keyWord;
+
     public $name;
+
     public $priority;
+
     public $user_id;
 
     public function render()
     {
-        $keyWord = '%' . $this->keyWord . '%';
+        $keyWord = '%'.$this->keyWord.'%';
+
         return view('livewire.projects.view', [
             'projects' => Project::latest()
-                        ->orWhere('name', 'LIKE', $keyWord)
-                        ->orWhere('priority', 'LIKE', $keyWord)
-                        ->orWhere('user_id', 'LIKE', $keyWord)
-                        ->orderBy('priority')
-                        ->paginate(10),
+                ->orWhere('name', 'LIKE', $keyWord)
+                ->orWhere('priority', 'LIKE', $keyWord)
+                ->orWhere('user_id', 'LIKE', $keyWord)
+                ->orderBy('priority')
+                ->paginate(10),
         ]);
     }
 
@@ -45,13 +51,13 @@ class Projects extends Component
     public function store()
     {
         $this->validate([
-        'name' => 'required',
+            'name' => 'required',
         ]);
 
         Project::create([
-            'name' => $this-> name,
-            'priority' => $this-> priority,
-            'user_id' => $this-> user_id
+            'name' => $this->name,
+            'priority' => $this->priority,
+            'user_id' => $this->user_id,
         ]);
 
         $this->resetInput();
@@ -63,23 +69,23 @@ class Projects extends Component
     {
         $record = Project::findOrFail($id);
         $this->selected_id = $id;
-        $this->name = $record-> name;
-        $this->priority = $record-> priority;
-        $this->user_id = $record-> user_id;
+        $this->name = $record->name;
+        $this->priority = $record->priority;
+        $this->user_id = $record->user_id;
     }
 
     public function update()
     {
         $this->validate([
-        'name' => 'required',
+            'name' => 'required',
         ]);
 
         if ($this->selected_id) {
             $record = Project::find($this->selected_id);
             $record->update([
-            'name' => $this-> name,
-            'priority' => $this-> priority,
-            'user_id' => $this-> user_id
+                'name' => $this->name,
+                'priority' => $this->priority,
+                'user_id' => $this->user_id,
             ]);
 
             $this->resetInput();
@@ -97,8 +103,8 @@ class Projects extends Component
 
     public function updateOrder($list)
     {
-        foreach($list as $item) {
-            Project::find($item['value'])->update(['priority' => $item['order']]) ;
+        foreach ($list as $item) {
+            Project::find($item['value'])->update(['priority' => $item['order']]);
         }
     }
 }

@@ -7,7 +7,7 @@
 
 # About
 
-Crud developed in *PHP/Laravel + Livewire + MySQL* with the purpose of demonstrating the use of this stack.
+Crud developed in *PHP/Laravel + Livewire + MySQL* with the purpose of demonstrating the use of this stack..
 
 This CRUD has the following features:
 

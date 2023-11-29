@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Models;
 
@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-	use HasFactory;
-	
+    use HasFactory;
+
     public $timestamps = true;
 
     protected $table = 'projects';
 
-    protected $fillable = ['name','priority','user_id'];
-	
+    protected $fillable = ['name', 'priority', 'user_id'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -22,7 +22,7 @@ class Project extends Model
     {
         return $this->hasMany('App\Models\Task', 'project_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -30,5 +30,4 @@ class Project extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-    
 }
